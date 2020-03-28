@@ -1,0 +1,35 @@
+# Python Environment Files
+env/
+
+# Idea Meta Files
+.idea/
+
+# Python Cache Files
+**/__pycache__/
+*.pyc
+
+# Project Configuration Files
+*.conf
+**/conf/
+
+# SQLite3 Database Files
+*.sqlite3
+
+# Collected static
+askme/askme/static/
+
+# Migrations
+**/migrations/
+
+# OS X Finder files
+.DS_store
+
+# Uploaded content
+**/uploads/
+
+# SASS Cache
+**/.sass-cache/
+*.scssc
+
+askme/core/static/core/css/
+askme/pages/static/pages/css/

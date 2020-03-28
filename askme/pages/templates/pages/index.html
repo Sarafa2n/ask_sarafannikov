@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'pages/css/question-item.css' %}">
+{% endblock %}
+
+{% block page-pad-left %}
+    <div class="page-pad__left__title">
+        <a href="#">new questions</a>
+        <a href="#">hot questions</a>
+    </div>
+
+    <div class="page-pad__left__content">
+        {% include 'pages/shards/question-item.html' %}
+        {% include 'pages/shards/question-item.html' %}
+    </div>
+    <div class="page-pad__left__content__pagination">
+        <a href="#" class="pagination-item">1</a>
+        <a href="#" class="pagination-item">2</a>
+        <a href="#" class="pagination-item">3</a>
+    </div>
+{% endblock %}
