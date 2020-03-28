@@ -9,8 +9,13 @@
 
 {% block page-pad-left %}
     <div class="page-pad__left__title">
-        <a href="#">new questions</a>
-        <a href="#">hot questions</a>
+    {% if request.path == "/" %}
+        <a href="{% url 'pages:index' %}">new questions</a>
+        <a href="{% url 'pages:hot' %}">hot questions</a>
+    {% elif request.path == "/hot/" %}
+        <a href="{% url 'pages:hot' %}">hot questions</a>
+        <a href="{% url 'pages:index' %}">new questions</a>
+    {% endif %}
     </div>
 
     <div class="page-pad__left__content">
