@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    {% block meta %}{% endblock %}
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'core/pics/logo/ask.png' %}">
+
+    <link href="{% static 'core/ect/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/header.css' %}">
+
+    {% block styling %}{% endblock %}
+
+    {% block scripts_top %}{% endblock %}
+
+</head>
+<body class="preload">
+
+{% block base %}
+
+    <div class="page-pad">
+        <div class="page-pad__header">
+            {% include 'core/shards/header.html' %}
+        </div>
+        <div class="page-pad__content">
+            <div class="page-pad__left">
+                {% block page-pad-left %}{% endblock %}
+            </div>
+            <div class="page-pad__right">
+                {% block page-pag-right %}{% endblock %}
+                <div class="right-block">
+                    <div class="right-block__title">popular tags</div>
+                    <div class="right-block__content">
+                        <a href="#" class="base_link_v1">Django</a>
+                        <a href="#" class="base_link_v1">Django</a>
+                        <a href="#" class="base_link_v1">Django</a>
+                        <a href="#" class="base_link_v1">Django</a>
+                        <a href="#" class="base_link_v1">Django</a>
+                    </div>
+                </div>
+                <div class="right-block">
+                    <div class="right-block__title">popular members</div>
+                    <div class="right-block__members">
+                        <div class="right-block__members__item">Django</div>
+                        <div class="right-block__members__item">Django</div>
+                        <div class="right-block__members__item">Django</div>
+                        <div class="right-block__members__item">Django</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{#    <div class="page-pad">#}
+{#        <div class="page-pad__header">#}
+{#            {% include 'core/shards/header.html' %}#}
+{#        </div>#}
+{#        <div class="page-pad__content">#}
+{#            <div class="page-pad__left">#}
+{#                {% block page-pad__left %}{% endblock %}#}
+{#            </div>#}
+{#            <div class="page-pad__right">#}
+{#                <div class="page-pad__tag">#}
+{#                    <div class="page-pad__tag__title">Popular tags</div>#}
+{#                    {% if false %}#}
+{#                        <div class="page-pad__tag__content__items">#}
+{#                            <a href="#" class="page-pad__tag__content__item base__link">Django</a>#}
+{#                            <a href="#" class="page-pad__tag__content__item base__link page-pad__tag__content__item__bolder">Black-Jack</a>#}
+{#                            <a href="#" class="page-pad__tag__content__item base__link">Django</a>#}
+{#                            <a href="#" class="page-pad__tag__content__item base__link page-pad__tag__content__item__bolder">Black-Jack</a>#}
+{#                            <a href="#" class="page-pad__tag__content__item base__link">Django</a>#}
+{#                            <a href="#" class="page-pad__tag__content__item base__link page-pad__tag__content__item__bolder">Black-Jack</a>#}
+{#                        </div>#}
+{#                    {% else %}#}
+{#                        <div class="page-pad__tag__content">#}
+{#                            <div class="page-pad__tag__default__title">No tags used yet</div>#}
+{#                            <img class="page-pad__tag__default__img" src="{% static 'core/pics/default/R.svg' %}">#}
+{#                        </div>#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#                <div class="page-pad__tag">#}
+{#                    <div class="page-pad__tag__title">Best Members</div>#}
+{#                    {% if false %}#}
+{#                        <div class="page-pad__tag__content__members">#}
+{#                            <div class="page-pad__tag__content__item-profile">Mr. Brown</div>#}
+{#                            <div class="page-pad__tag__content__item-profile">Mr. Brown</div>#}
+{#                            <div class="page-pad__tag__content__item-profile">Mr. Brown</div>#}
+{#                            <div class="page-pad__tag__content__item-profile">Mr. Brown</div>#}
+{#                        </div>#}
+{#                    {% else %}#}
+{#                        <div class="page-pad__tag__content">#}
+{#                            <div class="page-pad__tag__default__title">While there is no one who would be the best in matters, let's fix it</div>#}
+{#                            <img class="page-pad__tag__default__img" src="{% static 'core/pics/default/People.png' %}">#}
+{#                        </div>#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+
+{% endblock %}
+
+{% block scripts_bottom %}
+{% endblock %}
+    <script src="{% static 'core/js/jquery.min.js' %}"></script>
+    <script src="{% static 'core/js/base.js' %}"></script>
+</body>
+</html>
