@@ -11,5 +11,5 @@ urlpatterns = [
     path('singup/', SingUpView.as_view(), name='singup'),
     path('ask/', AskView.as_view(), name='ask'),
     path('question/<int:pk>', QuestionDetailView.as_view(), name='question'),
-    path('tag/<int:pk>', TagView.as_view(), name='tag')
+    path('tag/<slug:slug>', TagView.as_view(), name='tag')
 ]
