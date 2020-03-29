@@ -15,16 +15,31 @@
     {% elif request.path == "/hot/" %}
         <a href="{% url 'pages:hot' %}">hot questions</a>
         <a href="{% url 'pages:index' %}">new questions</a>
+    {% else  %}
+        {% for tag in tag_list %}
+            {% if tag.title in request.path %}
+                <div class="page-pad__left__title__div">Tag: {{ tag.title }} </div>
+            {% endif %}
+        {% endfor %}
     {% endif %}
     </div>
 
     <div class="page-pad__left__content">
-        {% include 'pages/shards/question-item.html' %}
-        {% include 'pages/shards/question-item.html' %}
+        {% for question in page_obj%}
+            {% include 'pages/shards/question-item.html' %}
+        {% endfor %}
     </div>
-    <div class="page-pad__left__content__pagination">
-        <a href="#" class="pagination-item">1</a>
-        <a href="#" class="pagination-item">2</a>
-        <a href="#" class="pagination-item">3</a>
-    </div>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+        <div class="block-page-pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="pagination-item"><</a>
+            {% endif  %}
+                <a class="pagination-item">{{ page_obj.number }} из {{ page_obj.paginator.num_pages }} страниц</a>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="pagination-item">></a>
+            {% endif %}
+        </div>
+    {% endif %}
+
 {% endblock %}

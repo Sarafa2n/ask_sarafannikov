@@ -4,6 +4,9 @@ from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from core.views import PageNotFound
+
+handler404 = PageNotFound.as_view()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
