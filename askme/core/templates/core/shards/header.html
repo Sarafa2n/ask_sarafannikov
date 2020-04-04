@@ -11,7 +11,7 @@
     <div class="header__user-information">
         <img class="header__user-information__avatar" src="{{ user.profile.avatar.url }}" alt="Avatar">
         <a href="{% url 'pages:settings' %}" class="header__user-information__link">{{ user.profile.nickname }}</a>
-        <a href="{% url 'core:logout' %}" class="base_link_v2">Logout</a>
+        <a href="{% url 'core:api_logout' %}" class="base_link_v2" id="js-btn-logout">Logout</a>
     </div>
 {% else %}
     <div class="header__user-information">

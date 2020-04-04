@@ -50,8 +50,12 @@ class AskView(TemplateView):
     template_name = "pages/ask.html"
 
 
-class LoginView(TemplateView):
-    template_name = "pages/login.html"
+class LoginView(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('pages:index')
+        else:
+            return render(request, 'pages/login.html')
 
 
 class SingUpView(TemplateView):

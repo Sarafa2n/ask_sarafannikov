@@ -132,7 +132,7 @@
       border-radius: 5px;
 
       font-weight: 100;
-      font-size: 18px;
+      font-size: 15px;
       line-height: 1.7em;
     }
 
@@ -146,13 +146,11 @@
 
 
   &__errors {
-    width: 300px;
     margin: 0 10px;
     min-height: 25px;
 
     color: $default_red;
     font-size: 20px;
-    font-weight: bold;
   }
 
   &__redirect {
@@ -192,8 +190,10 @@
       cursor: pointer;
       transition: 0.3s;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: $default_green;
+        outline: 0;
       }
     }
   }
