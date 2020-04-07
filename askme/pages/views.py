@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.views.generic import View, DetailView, ListView, TemplateView
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
 from .models import Question, Tag, Answer, Vote
+from .utils import pagination
 
 
 class IndexView(ListView):
@@ -23,15 +22,10 @@ class TagView(ListView):
         context = super(TagView, self).get_context_data(**kwargs)
         tag = self.kwargs.get('slug')
         tag_obj = get_object_or_404(Tag, title=tag)
-        context['page_obj'] = Question.objects.all().filter(tag=tag_obj).order_by('-created_dt')
-        paginator = Paginator(context['page_obj'], 3)
-        page = self.request.GET.get('page')
-        try:
-            context['page_obj'] = paginator.page(page)
-        except PageNotAnInteger:
-            context['page_obj'] = paginator.page(1)
-        except EmptyPage:
-            context['page_obj'] = paginator.page(paginator.num_pages)
+        context['page_obj'] = pagination(
+            Question.objects.all().filter(tag=tag_obj).order_by('-created_dt'),
+            self.request
+        )
         return context
 
 

@@ -20,6 +20,9 @@ class Vote(models.Model):
     question = models.ForeignKey('Question', null=True, blank=True, on_delete=models.CASCADE)
     answer = models.ForeignKey('Answer', null=True, blank=True, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = ['user', 'question']
+
     @property
     def value(self):
         value_map = {
@@ -68,6 +71,9 @@ class Tag(models.Model):
 
     title = models.CharField(max_length=30, unique=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
+
+    class Meta:
+        unique_together = ['title', 'slug']
 
     def __str__(self):
         return self.title

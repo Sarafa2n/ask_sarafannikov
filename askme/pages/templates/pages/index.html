@@ -29,17 +29,6 @@
             {% include 'pages/shards/question-item.html' %}
         {% endfor %}
     </div>
-
-    {% if page_obj.paginator.num_pages > 1 %}
-        <div class="block-page-pagination">
-            {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}" class="pagination-item"><</a>
-            {% endif  %}
-                <a class="pagination-item">{{ page_obj.number }} из {{ page_obj.paginator.num_pages }} страниц</a>
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" class="pagination-item">></a>
-            {% endif %}
-        </div>
-    {% endif %}
+    {% include 'pages/shards/pagination-item.html' %}
 
 {% endblock %}
