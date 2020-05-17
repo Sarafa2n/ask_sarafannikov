@@ -45,6 +45,8 @@ class AskView(TemplateView):
 
 
 class LoginView(View):
+    http_method_names = ['get']
+
     def get(self, request):
         if request.user.is_authenticated:
             return redirect('pages:index')
@@ -52,8 +54,14 @@ class LoginView(View):
             return render(request, 'pages/login.html')
 
 
-class SingUpView(TemplateView):
-    template_name = "pages/singup.html"
+class SingUpView(View):
+    http_method_names = ['get']
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('pages:index')
+        else:
+            return render(request, 'pages/singup.html')
 
 
 class QuestionDetailView(DetailView):

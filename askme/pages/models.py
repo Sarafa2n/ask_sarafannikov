@@ -21,7 +21,7 @@ class Vote(models.Model):
     answer = models.ForeignKey('Answer', null=True, blank=True, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ['user', 'question']
+        unique_together = ['user', 'question', 'answer']
 
     @property
     def value(self):

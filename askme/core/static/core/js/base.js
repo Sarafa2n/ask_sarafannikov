@@ -8,7 +8,7 @@ jQuery(function ($) {
     $.get('/api/logout',
         function (data) {
             if(data.status === 'success')
-                location.reload();
+                location.replace('/');
         });
   });
 

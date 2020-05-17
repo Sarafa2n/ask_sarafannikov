@@ -26,6 +26,7 @@ class PageNotFound(TemplateView):
 
 
 class ApiAuthView(View):
+    http_method_names = ['post']
 
     def post(self, request):
         if request.user.is_authenticated:
@@ -33,20 +34,20 @@ class ApiAuthView(View):
                 'status': 'auth',
                 'message': 'User is authenticated'
             })
-        else:
-            form = AuthenticationForm(request=request, data=request.POST)
-            if form.is_valid():
-                email = form.cleaned_data.get('username')
-                password = form.cleaned_data.get('password')
-                user = authenticate(username=email, password=password)
-                if user is not None:
-                    login(request, user)
-                    return JsonResponse({
-                        'status': 'success'
-                    })
-            else:
-                return JsonResponse({
-                    'status': 'invalid',
-                    'message': 'Sorry, wrong password',
-                    'errors': form.errors
-                })
+
+        form = AuthenticationForm(request=request, data=request.POST)
+        if form.is_valid():
+            return JsonResponse({
+                'status': 'invalid',
+                'message': 'Sorry, wrong password',
+                'errors': form.errors
+            })
+
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return JsonResponse({
+                'status': 'success'
+            })

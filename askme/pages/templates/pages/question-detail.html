@@ -13,7 +13,7 @@
     <div class="page-pad__left__title">
         <div class="question-detail__title">{{ question_detail.title }}</div>
         <div class="question-item__author">
-            <img class="question-item__author__avatar" src="{{ question_detail.profile.avatar.url }}" alt="avatar" />
+            <img class="question-item__author__avatar" src="{% if question_detail.profile.avatar %} {{  question_detail.profile.avatar.url }} {% else %} {% static 'core/pics/default/Avatar.png' %} {% endif %}" alt="avatar" />
             <div class="question-item__author__nickname">{{ question_detail.profile.nickname }}</div>
         </div>
     </div>
@@ -23,7 +23,7 @@
             <div class="question-item__tags">
                 <span>Tags:</span>
                 {% for tag in question_detail.tag.all %}
-                    <a href="{{ tag.get_absolute.url }}" class="base_link_v1">{{ tag.title }}</a>
+                    <a href="{{ tag.get_absolute_url }}" class="base_link_v1">{{ tag.title }}</a>
                 {% endfor %}
             </div>
             <div class="question-item__answer-count">

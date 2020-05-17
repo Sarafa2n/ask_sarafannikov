@@ -19,7 +19,7 @@
     <div class="page-pad__left__content">
         <div class="profile">
             <label class="profile__avatar" for="upload_image">
-                <img src="{{ user.profile.avatar.url }}" alt="fa"/>
+                <img src="{% if user.profile.avatar %} {{  user.profile.avatar.url }} {% else %} {% static 'core/pics/default/Avatar.png' %} {% endif %}" alt="fa"/>
             </label>
             <form class="form js-update-profile" method="POST" action="#">
                 <div class="form__errors"></div>

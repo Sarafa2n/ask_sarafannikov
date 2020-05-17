@@ -4,7 +4,7 @@
     <div class="question-item__header">
         <a href="{{ question.get_absolute_url }}" class="question-item__title">{{ question.title }}</a>
         <div class="question-item__author">
-            <img class="question-item__author__avatar" src="{{ question.profile.avatar.url }}" alt="avatar" />
+            <img class="question-item__author__avatar" src="{% if question.profile.avatar %} {{ question.profile.avatar.url }} {% else %} {% static 'core/pics/default/Avatar.png' %} {% endif %}" alt="avatar" />
             <div class="question-item__author__nickname">{{ question.profile.nickname }}</div>
         </div>
     </div>
