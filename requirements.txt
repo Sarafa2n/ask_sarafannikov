@@ -1,6 +1,6 @@
 Django==2.2.10
 django-confidence==0.1.0
-Pillow==7.0.0
+Pillow==8.2.0
 psycopg2==2.8.4
 pytz==2019.3
 sqlparse==0.3.1
